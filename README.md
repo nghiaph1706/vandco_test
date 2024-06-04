@@ -1,4 +1,3 @@
-Certainly! Here's an updated README.md template with instructions for migrating the database, seeding data, and running unit tests:
 
 ---
 
