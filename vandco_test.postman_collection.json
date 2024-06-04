@@ -1,0 +1,657 @@
+{
+	"info": {
+		"_postman_id": "f51bb8bb-f6ab-4733-815e-f55c0ee8bb05",
+		"name": "vandco_test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29534328"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "api/login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "carrie71@example.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api/logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "api/stores/{store}/products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 1|PI2XI3Zg4fDtgNaZRdC1xfkpxLxIRYNbQohDdfEgef6cfb37"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/stores/:store/products?search=Tomato",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"stores",
+								":store",
+								"products"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "Tomato"
+								}
+							],
+							"variable": [
+								{
+									"key": "store"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api/stores/{store}/products/{product}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 1|PI2XI3Zg4fDtgNaZRdC1xfkpxLxIRYNbQohDdfEgef6cfb37"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/stores/:store/products/:product",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"stores",
+								":store",
+								"products",
+								":product"
+							],
+							"variable": [
+								{
+									"key": "store"
+								},
+								{
+									"key": "product"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api/stores/{store}/products",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "New Product",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Description of new product",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "10.99",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "100",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/stores/:store/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"stores",
+								":store",
+								"products"
+							],
+							"variable": [
+								{
+									"key": "store",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api/stores/{store}/products/{product}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Updated Product Name",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Updated product description",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "19.99",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "200",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/stores/:store/products/:product",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"stores",
+								":store",
+								"products",
+								":product"
+							],
+							"variable": [
+								{
+									"key": "store",
+									"value": ""
+								},
+								{
+									"key": "product",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api/stores/{store}/products/{product}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/stores/:store/products/:product",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"stores",
+								":store",
+								"products",
+								":product"
+							],
+							"variable": [
+								{
+									"key": "store",
+									"value": ""
+								},
+								{
+									"key": "product",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Store",
+			"item": [
+				{
+					"name": "api/stores",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/stores?search=Effertz-Haley",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"stores"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "Effertz-Haley"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api/stores/{store}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/stores/:store",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"stores",
+								":store"
+							],
+							"variable": [
+								{
+									"key": "store",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api/stores",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "New Store",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Description of the new store",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/stores",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"stores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api/stores/{store}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Updated Store Name",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Updated store description",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/stores/:store",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"stores",
+								":store"
+							],
+							"variable": [
+								{
+									"key": "store"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api/stores/{store}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/stores/:store",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"stores",
+								":store"
+							],
+							"variable": [
+								{
+									"key": "store"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000"
+		},
+		{
+			"key": "token",
+			"value": "1|PI2XI3Zg4fDtgNaZRdC1xfkpxLxIRYNbQohDdfEgef6cfb37"
+		}
+	]
+}

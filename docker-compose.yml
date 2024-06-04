@@ -1,0 +1,56 @@
+version: "3.9"
+volumes:
+    php-fpm-socket:
+    psysh-store:
+    dbdata:
+services:
+    php:
+        build:
+            context: .
+            dockerfile: ./infra/docker/php/Dockerfile
+        container_name: vandco_php
+        volumes:
+            - type: volume
+              source: php-fpm-socket
+              target: /var/run/php-fpm
+              volume:
+                  nocopy: true
+            - type: bind
+              source: ./
+              target: /work/backend
+            - type: volume
+              source: psysh-store
+              target: /root/.config/psysh
+              volume:
+                  nocopy: true
+    api:
+        build:
+            context: .
+            dockerfile: ./infra/docker/nginx-api/Dockerfile
+        container_name: vandco_web
+        ports:
+            - target: 80
+              published: 9060
+        volumes:
+            - type: volume
+              source: php-fpm-socket
+              target: /var/run/php-fpm
+              volume:
+                  nocopy: true
+            - type: bind
+              source: ./
+              target: /work/backend
+
+    db:
+        image: mysql
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: vandco2024
+            MYSQL_DATABASE: vandco
+            MYSQL_USER: vandco_user
+            MYSQL_PASSWORD: vandco@2024
+        ports:
+            - "3306:3306"
+        volumes:
+            - dbdata:/var/lib/mysql
