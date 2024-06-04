@@ -30,7 +30,7 @@ services:
         container_name: vandco_web
         ports:
             - target: 80
-              published: 9060
+              published: 8000
         volumes:
             - type: volume
               source: php-fpm-socket
@@ -44,7 +44,7 @@ services:
     db:
         image: mysql
         command: --default-authentication-plugin=mysql_native_password
-        restart: always
+        container_name: vandco_db
         environment:
             MYSQL_ROOT_PASSWORD: vandco2024
             MYSQL_DATABASE: vandco
